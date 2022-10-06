@@ -8,6 +8,7 @@
   	<revision>1.0</revision>
   	<sha1>0</sha1>
   	<changelist>-SNAPSHOT</changelist>
+  	<recent.version>2022-10</recent.version>
   </properties>
   <modules>
   	<module>recent-plugins</module>
