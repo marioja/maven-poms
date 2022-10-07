@@ -4,6 +4,8 @@
   <artifactId>maven-poms</artifactId>
   <version>${revision}.${sha1}${changelist}</version>
   <packaging>pom</packaging>
+  <name>Useful Maven POMs</name>
+  <description>This multi-module project contains a list of useful Maven parent POM for use in Java development.</description>
   <properties>
   	<revision>1.0</revision>
   	<sha1>0</sha1>
@@ -86,6 +88,11 @@
     <name>MFJ Associates</name>
     <url>www.mfjassociates.net</url>
   </organization>
-  <name>Useful Maven POMs</name>
-  <description>This multi-module project contains a list of useful Maven parent POM for use in Java development.</description>
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <name>Central Repository OSSRH</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
 </project>
