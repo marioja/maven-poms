@@ -10,7 +10,7 @@
   <artifactId>recent-plugins</artifactId>
   <packaging>pom</packaging>
   <name>Recent Maven Plugins Versions</name>
-  <description>This parent POM defines a recent set of maven plugin versions that can be used as the default for new maven projects.</description>
+  <description>This parent POM adds a recent set of maven plugin to the dependency and plugin management that can be used as the default for new maven projects.</description>
   <properties>
     <!-- Common dependencies -->
     <aspectj.version>1.9.2</aspectj.version>
@@ -175,8 +175,12 @@
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${maven.surefire.version}</version><!-- Use the same version 
-            as surefire, part of the same project -->
+          <!-- Use the same version as surefire, part of the same project -->
+          <version>${maven.surefire.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>${maven.gpg.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-help-plugin</artifactId>
@@ -218,10 +222,39 @@
           <artifactId>maven-war-plugin</artifactId>
           <version>${maven.war.version}</version>
         </plugin>
+        <plugin>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>${nexus.staging.maven.version}</version>
+        </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadoc</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-source</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
-
   <organization>
     <name>MFJ Associates</name>
     <url>www.mfjassociates.net</url>

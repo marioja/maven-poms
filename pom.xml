@@ -10,6 +10,8 @@
   	<changelist>-SNAPSHOT</changelist>
   	<recent.version>2022-10</recent.version>
     <flatten.maven.version>1.3.0</flatten.maven.version>
+    <maven.gpg.version>3.0.1</maven.gpg.version>
+    <nexus.staging.maven.version>1.6.7</nexus.staging.maven.version>
   </properties>
   <modules>
   	<module>recent-plugins</module>
@@ -47,6 +49,43 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>${nexus.staging.maven.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>${maven.gpg.version}</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <configuration>
+              <gpgArguments>
+                <arg>--pinentry-mode</arg>
+                <arg>loopback</arg>
+              </gpgArguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
+  <organization>
+    <name>MFJ Associates</name>
+    <url>www.mfjassociates.net</url>
+  </organization>
+  <name>Useful Maven POMs</name>
+  <description>This multi-module project contains a list of useful Maven parent POM for use in Java development.</description>
 </project>
