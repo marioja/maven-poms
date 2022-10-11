@@ -29,7 +29,7 @@ jobs:
         run: |
           mvn \
             --no-transfer-progress \
-            --batch-mode \
+            --batch-mode -X \
             deploy
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
